@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Cargando experiencia...</title>
+  <script>
+    // PEGA AQUÍ TU URL ACTIVA DE CLOUDFLARE TUNNEL:
+    const DESTINO = "https://checking-smoke-cincinnati-llc.trycloudflare.com";
+
+    // Redirección inmediata conservando rutas o parámetros si los hubiera
+    const params = window.location.search;
+    const path = window.location.pathname.replace('/qr-redirect', '');
+    window.location.replace(DESTINO + path + params);
+  </script>
+</head>
+<body style="background:#111; color:#eee; font-family:sans-serif; text-align:center; padding-top:20vh;">
+  <p>Conectando con el servidor...</p>
+</body>
+</html>
