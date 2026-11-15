@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <title>Efigie</title>
   <script>
-    window.location.replace("https://figie-qr-redirect.jose-sicardi-r2.workers.dev/");
+    const destino = new URL("https://figie-qr-redirect.jose-sicardi-r2.workers.dev/");
+    const ruta = new URLSearchParams(window.location.search).get("ruta");
+    if (ruta) destino.searchParams.set("ruta", ruta);
+    window.location.replace(destino.href);
   </script>
 </head>
 <body style="background:#111; color:#eee; font-family:sans-serif; text-align:center; padding-top:20vh;">

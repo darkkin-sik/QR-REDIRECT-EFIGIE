@@ -9,4 +9,6 @@ El QR permanente abre la página de GitHub Pages, que redirige al Cloudflare Wor
 3. Publica este repositorio en GitHub Pages desde la rama `main`.
 4. El script `iniciar.ps1` actualiza `destino.txt` y lo sube a `main` cada vez que inicia un túnel.
 
-El QR impreso debe apuntar a `https://darkkin-sik.github.io/QR-REDIRECT-EFIGIE/`.
+El QR general debe apuntar a `https://darkkin-sik.github.io/QR-REDIRECT-EFIGIE/`.
+
+El enlace independiente del hub es `https://darkkin-sik.github.io/QR-REDIRECT-EFIGIE/?ruta=hub`. La página de GitHub Pages pasa la ruta al Worker, que agrega `/hub.html` al túnel activo. La raíz sigue redirigiendo al inicio actual, sin cambios. Al agregar nuevos destinos, incluye únicamente rutas permitidas en `worker.js`.

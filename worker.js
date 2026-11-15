@@ -1,4 +1,7 @@
 const DESTINO_URL = "https://raw.githubusercontent.com/darkkin-sik/QR-REDIRECT-EFIGIE/main/destino.txt";
+const RUTAS = new Map([
+  ["hub", "/hub.html"]
+]);
 
 const NO_CACHE_HEADERS = {
   "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0",
@@ -16,7 +19,12 @@ function errorResponse(message, status) {
 }
 
 export default {
-  async fetch() {
+  async fetch(request) {
+    const ruta = new URL(request.url).searchParams.get("ruta");
+    if (ruta !== null && !RUTAS.has(ruta)) {
+      return errorResponse("La ruta solicitada no existe.", 404);
+    }
+
     const manifestUrl = new URL(DESTINO_URL);
     manifestUrl.searchParams.set("cacheBust", `${Date.now()}-${Math.random()}`);
 
@@ -30,11 +38,12 @@ export default {
       return errorResponse("El destino todavía no está configurado. Inicia el servidor y vuelve a escanear el QR.", 503);
     }
 
+    const destinoFinal = ruta === null ? destino : new URL(RUTAS.get(ruta), destino).href;
     return new Response(null, {
       status: 302,
       headers: {
         ...NO_CACHE_HEADERS,
-        "Location": destino
+        "Location": destinoFinal
       }
     });
   }
