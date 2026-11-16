@@ -1,6 +1,7 @@
 const DESTINO_URL = "https://raw.githubusercontent.com/darkkin-sik/QR-REDIRECT-EFIGIE/main/destino.txt";
 const RUTAS = new Map([
-  ["hub", "/hub.html"]
+  ["hub", "/hub.html"],
+  ["comunidad", "/encuesta-comunidad"]
 ]);
 
 const NO_CACHE_HEADERS = {

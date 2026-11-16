@@ -12,3 +12,5 @@ El QR permanente abre la página de GitHub Pages, que redirige al Cloudflare Wor
 El QR general debe apuntar a `https://darkkin-sik.github.io/QR-REDIRECT-EFIGIE/`.
 
 El enlace independiente del hub es `https://darkkin-sik.github.io/QR-REDIRECT-EFIGIE/?ruta=hub`. La página de GitHub Pages pasa la ruta al Worker, que agrega `/hub.html` al túnel activo. La raíz sigue redirigiendo al inicio actual, sin cambios. Al agregar nuevos destinos, incluye únicamente rutas permitidas en `worker.js`.
+
+La encuesta independiente de comunidad usa `https://darkkin-sik.github.io/QR-REDIRECT-EFIGIE/?ruta=comunidad` y abre `/encuesta-comunidad` en el servidor activo. Esta ruta necesita que el Worker actualizado se despliegue en Cloudflare; modificar este archivo o publicar `destino.txt` no despliega el Worker.
